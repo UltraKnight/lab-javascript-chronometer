@@ -43,7 +43,8 @@ class Chronometer {
     }
     resetClick() {
       // ... your code goes here
-      this.currentTime = 0;
+      this.currentTime = 0.00;
+      this.start = Date.now();
     }
     splitClick() {
       // ... your code goes here
