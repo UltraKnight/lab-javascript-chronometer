@@ -19,11 +19,11 @@ class Chronometer {
 
     getMinutes() {
       // ... your code goes here
-      return Math.floor(this.getSeconds() / 60);
+      return Math.floor(Math.floor(this.currentTime) / 60);
     }
     getSeconds() {
       // ... your code goes here
-      return Math.floor(this.currentTime);
+      return Math.floor(this.currentTime) % 60;
     }
     getMiliseconds() {
         let mili = parseInt(this.currentTime.toString().slice(-2));
