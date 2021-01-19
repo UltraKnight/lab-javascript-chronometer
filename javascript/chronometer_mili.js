@@ -2,15 +2,18 @@ class Chronometer {
     constructor() {
       // ... your code goes here
       this.start = Date.now();
+      this.timeWhenStop = 0;
       this.currentTime = 0.00;
       this.intervalId =  0;
     }
   
     startClick(callback) {
       // ... your code goes here
+      this.start = Date.now();
+
       this.intervalId = setInterval(() => {
-        let elapsedTime = Date.now() - this.start;
-        this.currentTime = (elapsedTime / 1000).toFixed(2);
+        this.elapsedTime = Date.now() - this.start + this.timeWhenStop;
+        this.currentTime = (this.elapsedTime / 1000).toFixed(2);
         if(typeof callback === "function") {
           callback();
         }
@@ -40,10 +43,12 @@ class Chronometer {
     stopClick() {
       // ... your code goes here
       clearInterval(this.intervalId);
+      this.timeWhenStop = this.elapsedTime;
     }
     resetClick() {
       // ... your code goes here
       this.currentTime = 0.00;
+      this.timeWhenStop = 0;
       this.start = Date.now();
     }
     splitClick() {
